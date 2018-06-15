@@ -3,8 +3,8 @@
 
 スクロールしてウインドウ内に入って来たときにフェードしながらふわっと出現してくるエフェクトを実現する時に便利です。
 
-# DEMOSITE
-http://
+# DEMO PAGE
+Scrollon デモページはこちら: https://ddryo.github.io/Scrollon/
 
 # scrollonの読み込み方法
 scrollon.min.jsファイルをダウンロードし、scriptタグで読み込みます。

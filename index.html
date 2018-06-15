@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scrollon DEMO</title>
+    <meta name="description" content="scrollon はスクロール時ウインドウ内に入った対象の要素にクラスを付与するだけのシンプルなプラグインです。jQuery不要でサクサク動きます。">
+
+    <script src="./scrollon/scrollon.min.js"></script>
+
+    <meta name="viewport" content="width=1000">
+
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Scrollon</h1>
+    </header>
+    <main id="content">
+
+        <section>
+            <h2>
+                Scrollonの魅力
+            </h2>
+            <div class="wrapp">
+                <p>
+                    処理内容はクラスの付与だけ。とてもシンプルです。<br>
+                    そのため、アニメーションの実装は全てCSSに任せることができ、少しの工夫で様々な出現方法を実現できます。
+                    <br>
+                    このデモページでは、その例をいくつか紹介しようと思います。
+                    <br>
+                    <br>
+                    * 当デモページでは便宜上、Scrollonの呼び出しを以下のようにしていますが、本来はもっとシンプルです。（使用方法については README をご覧ください。）
+                </p>
+                <span class="codettl">body閉じタグ直前にて</span>
+                <pre><code>
+&lt;script&gt;
+    new Scrollon('.item1, .item2, .item3, .item4');
+&lt;/script&gt;
+                </code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>
+                単純なフェードイン
+            </h2>
+            <div class="wrapp">
+                <span class="block item1"></span>
+                <span class="codettl">CSS</span>
+                <pre><code>
+.item1{
+    opacity: 0;
+}
+.item1.scon{
+    opacity: 1;
+    transition: all 2s;
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>
+                下からフェードイン
+            </h2>
+            <div class="wrapp">
+                <span class="block item2"></span>
+                <span class="codettl">CSS</span>
+                <pre><code>
+.item2{
+    position: relative;
+    top: 30px;
+    opacity: 0;
+}
+.item2.scon{
+    top: 0;
+    opacity: 1;
+    transition: all 2s;
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>
+                左からフェードイン
+            </h2>
+            <div class="wrapp">
+                <span class="block item3"></span>
+                <span class="codettl">CSS</span>
+                <pre><code>
+.item3{
+    position: relative;
+    right: 30px;
+    opacity: 0;
+}
+.item3.scon{
+    right: 0;
+    opacity: 1;
+    transition: all 2s;
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>
+                リストを順に下からフェードイン
+            </h2>
+            <div class="wrapp">
+                <ul class="item4">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="clear"></div>
+
+                <span class="codettl">CSS</span>
+                <pre><code>
+@keyframes fade_list {
+  0% {
+    top: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.item4 li{
+    position: relative;
+    top: 30px;
+    opacity: 0;
+}
+
+.item4.scon li:nth-child(1){
+    animation: fade_list 2s ease 0s 1 normal both running;
+}
+.item4.scon li:nth-child(2){
+    animation: fade_list 2s ease 0.3s 1 normal both running;
+}
+.item4.scon li:nth-child(3){
+    animation: fade_list 2s ease 0.6s 1 normal both running;
+}
+.item4.scon li:nth-child(4){
+    animation: fade_list 2s ease 0.9s 1 normal both running;
+}
+.item4.scon li:nth-child(5){
+    animation: fade_list 2s ease 1.2s 1 normal both running;
+}
+.item4.scon li:nth-child(6){
+    animation: fade_list 2s ease 1.5s 1 normal both running;
+}
+.item4.scon li:nth-child(7){
+    animation: fade_list 2s ease 1.8s 1 normal both running;
+}
+.item4.scon li:nth-child(8){
+    animation: fade_list 2s ease 2.1s 1 normal both running;
+}
+                </code></pre>
+                <p>
+                    @keyframesアニメーションを利用すれば、親にクラスを付与するだけで子要素を順番にフェードさせることも簡単です。<br>
+                    上記ではただのCSSでの記述なので少し手間がかかりますが、Sassを利用すれば関数でループ処理できるので手軽に実装できます。
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        new Scrollon('.item1, .item2, .item3, .item4');
+    </script>
+</body>
+</html>
